@@ -1,0 +1,31 @@
+{
+  "name": "support-triage",
+  "description": "Neutral sample evals for classifying public support requests.",
+  "prompt": "Classify this support request into one label: billing, bug, account, or general. Return only the label.",
+  "cases": [
+    {
+      "id": "billing-duplicate-charge",
+      "input": "I see two charges for the same monthly subscription.",
+      "expect": {
+        "type": "exact",
+        "value": "billing"
+      }
+    },
+    {
+      "id": "bug-export-fails",
+      "input": "The CSV export button shows an error every time I click it.",
+      "expect": {
+        "type": "exact",
+        "value": "bug"
+      }
+    },
+    {
+      "id": "account-password-reset",
+      "input": "I need help resetting my password.",
+      "expect": {
+        "type": "exact",
+        "value": "account"
+      }
+    }
+  ]
+}

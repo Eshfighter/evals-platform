@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+key
+key.pub
+
+# Runtime output
+data/
+runs/
+coverage/
+*.log
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Build output
+dist/
+build/

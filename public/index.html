@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evals Platform</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Evals Platform</p>
+          <h1>Agent conversations into model comparisons.</h1>
+        </div>
+        <div class="status-strip">
+          <span id="providerBadge">provider</span>
+          <span id="datasetCount">0 datasets</span>
+          <span id="evaluatorCount">0 evaluators</span>
+        </div>
+      </header>
+
+      <section class="workbench">
+        <div class="panel chat-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Agent</p>
+              <h2>Talk through a case</h2>
+            </div>
+            <select id="chatModel"></select>
+          </div>
+          <div id="messages" class="messages" aria-live="polite"></div>
+          <form id="chatForm" class="composer">
+            <textarea id="chatInput" placeholder="Ask the agent about a support scenario"></textarea>
+            <button type="submit">Send</button>
+          </form>
+          <div class="save-row">
+            <select id="saveDataset"></select>
+            <input id="expectedAnswer" placeholder="Expected label or behavior">
+            <button id="saveConversation" type="button">Add to dataset</button>
+          </div>
+        </div>
+
+        <aside class="side-stack">
+          <section class="panel">
+            <div class="panel-head compact">
+              <div>
+                <p class="eyebrow">Dataset</p>
+                <h2>Capture examples</h2>
+              </div>
+            </div>
+            <form id="datasetForm" class="stack-form">
+              <input id="datasetName" placeholder="Dataset name">
+              <input id="datasetDescription" placeholder="Short description">
+              <button type="submit">Create dataset</button>
+            </form>
+            <div id="datasetList" class="list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head compact">
+              <div>
+                <p class="eyebrow">Evaluator</p>
+                <h2>Define an LLM judge</h2>
+              </div>
+            </div>
+            <form id="evaluatorForm" class="stack-form">
+              <input id="evaluatorName" placeholder="Evaluator name">
+              <select id="evaluatorModel"></select>
+              <textarea id="evaluatorPrompt" placeholder="Judge instruction"></textarea>
+              <button type="submit">Create evaluator</button>
+            </form>
+            <div id="evaluatorList" class="list"></div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="panel compare-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Compare</p>
+            <h2>Run datasets across models</h2>
+          </div>
+          <form id="compareForm" class="compare-controls">
+            <select id="compareDataset"></select>
+            <select id="compareEvaluator"></select>
+            <div id="modelChecks" class="model-checks"></div>
+            <button type="submit">Run comparison</button>
+          </form>
+        </div>
+        <div id="summary" class="summary-grid"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Case</th>
+                <th>Model</th>
+                <th>Score</th>
+                <th>Output</th>
+                <th>Judge reason</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody">
+              <tr><td colspan="5">Run a comparison to populate results.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
